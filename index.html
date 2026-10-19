@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swach Netra AI | Clean India</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+<body>
+
+<header class="navbar">
+    <a class="logo" href="index.html">🌿 Swach Netra AI</a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Litter</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="tag">AI FOR A CLEANER INDIA</span>
+
+        <h1>See the waste.<br><span>Be the change.</span></h1>
+
+        <p>
+            Making our streets, parks, and public spaces cleaner
+            using artificial intelligence and community action.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="report.html" class="btn">Report Litter →</a>
+            <a href="dashboard.html" class="btn btn-outline">
+                Explore Dashboard
+            </a>
+        </div>
+
+        <p class="small-text">♻️ Small actions can create a cleaner future.</p>
+    </div>
+
+    <div class="hero-art">
+        <div class="earth">🌍</div>
+        <div class="floating-card card-one">🤖 AI Detection</div>
+        <div class="floating-card card-two">🌱 Clean Environment</div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat-card">
+        <span>📸</span>
+        <p>Total Reports</p>
+        <h2 id="total-reports">0</h2>
+    </div>
+
+    <div class="stat-card">
+        <span>🧹</span>
+        <p>Cleaned Reports</p>
+        <h2 id="cleaned-reports">0</h2>
+    </div>
+
+    <div class="stat-card">
+        <span>⏳</span>
+        <p>Pending Reports</p>
+        <h2 id="pending-reports">0</h2>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <div>
+            <span class="tag">COMMUNITY REPORTS</span>
+            <h2>Litter Hotspot Map</h2>
+        </div>
+
+        <a href="dashboard.html" class="text-link">View reports →</a>
+    </div>
+
+    <div id="map"></div>
+
+    <p class="small-text">
+        Report locations appear on the map when coordinates are provided.
+    </p>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <div>
+            <span class="tag">OUR SOLUTION</span>
+            <h2>Technology for a cleaner tomorrow</h2>
+        </div>
+    </div>
+
+    <div class="features">
+        <article class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Litter Detection</h3>
+            <p>
+                Analyze uploaded photographs using a computer-vision model
+                to identify selected objects that may be litter.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>Hotspot Mapping</h3>
+            <p>
+                Display submitted reports on a map to help identify
+                locations that may require cleaning.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">♻️</div>
+            <h3>Cleanup Tracking</h3>
+            <p>
+                Monitor report progress and attach before-and-after
+                cleanup evidence.
+            </p>
+        </article>
+    </div>
+</section>
+
+<footer>
+    <h3>🌿 Swach Netra AI</h3>
+    <p>Smart technology. Cleaner surroundings. A better tomorrow.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Swach Netra AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a class="logo" href="index.html">🌿 Swach Netra AI</a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Litter</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<main class="page-container">
+    <span class="tag">REPORT MANAGEMENT</span>
+    <h1>Cleanup Dashboard</h1>
+
+    <p class="page-description">
+        View litter reports, update cleanup progress, and upload
+        photographs showing completed cleanup work.
+    </p>
+
+    <button id="refresh-btn" class="btn">↻ Refresh Reports</button>
+
+    <div id="dashboard-message" aria-live="polite"></div>
+
+    <div id="reports-list" class="report-grid">
+        <p>Loading reports...</p>
+    </div>
+</main>
+
+<footer>
+    <p>🌿 Swach Netra AI — Track progress towards cleaner communities.</p>
+</footer>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

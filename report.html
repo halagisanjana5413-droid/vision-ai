@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Litter | Swach Netra AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a class="logo" href="index.html">🌿 Swach Netra AI</a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Litter</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<main class="page-container">
+    <span class="tag">TAKE ACTION</span>
+    <h1>Report litter in your area</h1>
+
+    <p class="page-description">
+        Upload a photograph of garbage in a street, park, or public space.
+        Enter the location so that the report can be mapped and reviewed.
+    </p>
+
+    <form id="report-form" class="form-card">
+
+        <div class="field">
+            <label for="photo">Upload Photograph *</label>
+            <input
+                type="file"
+                id="photo"
+                name="photo"
+                accept="image/jpeg,image/png,image/webp"
+                required
+            >
+            <small>Accepted formats: JPG, PNG, WebP. Maximum 5 MB.</small>
+        </div>
+
+        <div class="field">
+            <label for="location">Location Name *</label>
+            <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Example: City Park, Gokak"
+                maxlength="250"
+                required
+            >
+        </div>
+
+        <div class="form-row">
+            <div class="field">
+                <label for="latitude">Latitude (optional)</label>
+                <input
+                    type="number"
+                    id="latitude"
+                    name="latitude"
+                    min="-90"
+                    max="90"
+                    step="any"
+                    placeholder="16.17"
+                >
+            </div>
+
+            <div class="field">
+                <label for="longitude">Longitude (optional)</label>
+                <input
+                    type="number"
+                    id="longitude"
+                    name="longitude"
+                    min="-180"
+                    max="180"
+                    step="any"
+                    placeholder="74.82"
+                >
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                maxlength="1000"
+                placeholder="Describe the visible litter or surroundings..."
+            ></textarea>
+        </div>
+
+        <button type="submit" class="btn full-btn" id="submit-btn">
+            🤖 Analyze & Submit Report
+        </button>
+
+        <div id="result" aria-live="polite"></div>
+    </form>
+</main>
+
+<footer>
+    <p>🌿 Swach Netra AI — Join us in creating cleaner public spaces.</p>
+</footer>
+
+<script src="js/report.js"></script>
+
+</body>
+</html>
