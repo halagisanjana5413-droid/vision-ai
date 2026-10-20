@@ -1,138 +1,1405 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swach Netra AI | Clean India</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
+<title>Clean Vision AI | A Greener Tomorrow</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #07130f;
+    --panel: #0d2018;
+    --panel-light: #122a20;
+    --green: #b8ff65;
+    --green-dark: #67d83e;
+    --white: #f4f8f2;
+    --muted: #9aafa0;
+    --border: rgba(184,255,101,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+/* BACKGROUND */
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: #4ee65b;
+    filter: blur(180px);
+    opacity: 0.09;
+    pointer-events: none;
+    z-index: -1;
+    top: 100px;
+    right: -200px;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--green);
+    opacity: 0.4;
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(105vh) translateX(0);
+        opacity: 0;
+    }
+    20% { opacity: 0.5; }
+    to {
+        transform: translateY(-10vh) translateX(60px);
+        opacity: 0;
+    }
+}
+
+/* NAVBAR */
+
+nav {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(7,19,15,0.8);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: var(--green);
+    color: #102014;
+    border-radius: 14px;
+    font-size: 23px;
+    box-shadow: 0 0 25px rgba(184,255,101,0.15);
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-button {
+    padding: 12px 20px;
+    background: var(--green);
+    color: #102014 !important;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 690px;
+    padding: 90px 7% 100px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(184,255,101,0.06);
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+}
+
+.hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(43px, 5.5vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    max-width: 540px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #102014;
+    box-shadow: 0 0 25px rgba(184,255,101,0.12);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px rgba(184,255,101,0.3);
+}
+
+.btn-secondary {
+    border-color: rgba(255,255,255,0.15);
+    color: var(--white);
+    background: rgba(255,255,255,0.025);
+}
+
+.btn-secondary:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* HERO VISUAL */
+
+.hero-visual {
+    min-height: 450px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbit {
+    width: 390px;
+    height: 390px;
+    border: 1px solid rgba(184,255,101,0.15);
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 35s linear infinite;
+}
+
+.orbit::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    top: 48px;
+    left: 65px;
+    box-shadow: 0 0 20px var(--green);
+}
+
+.orbit-two {
+    width: 300px;
+    height: 300px;
+    border-color: rgba(184,255,101,0.2);
+    animation-direction: reverse;
+    animation-duration: 25s;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+.planet {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 35% 25%, #b8ff9d 0%, #55bd63 30%, #1c7249 60%, #103527 100%);
+    box-shadow:
+        inset -25px -20px 45px rgba(0,0,0,0.45),
+        0 0 80px rgba(103,216,62,0.2);
+    animation: planetFloat 5s ease-in-out infinite;
+    overflow: hidden;
+}
+
+.planet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: repeating-linear-gradient(
+        150deg,
+        transparent 0px,
+        transparent 20px,
+        rgba(255,255,255,0.04) 22px,
+        transparent 27px
+    );
+}
+
+.planet-emoji {
+    font-size: 95px;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.2));
+    z-index: 1;
+}
+
+@keyframes planetFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.floating-card {
+    position: absolute;
+    padding: 17px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    background: rgba(13,32,24,0.92);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+    animation: cardFloat 5s ease-in-out infinite;
+}
+
+.card-one {
+    top: 60px;
+    right: -5px;
+}
+
+.card-two {
+    bottom: 50px;
+    left: -10px;
+    animation-delay: 1s;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+.card-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.card-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-value span {
+    color: var(--green);
+}
+
+/* SECTION COMMON */
+
+section.content-section {
+    padding: 90px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-tag {
+    color: var(--green);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(30px, 4vw, 46px);
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin: auto;
+}
+
+/* STATS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    padding: 30px 20px;
+    background: linear-gradient(145deg, #10251a, #0b1913);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(184,255,101,0.45);
+}
+
+.stat-icon {
+    font-size: 27px;
+    margin-bottom: 22px;
+}
+
+.stat-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 7px;
+}
+
+.stat-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* FEATURES */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 32px;
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    background: var(--panel-light);
+    transform: translateY(-6px);
+    border-color: var(--border);
+}
+
+.feature-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(184,255,101,0.09);
+    display: grid;
+    place-items: center;
+    font-size: 27px;
+    margin-bottom: 24px;
+}
+
+.feature-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 21px;
+    margin-bottom: 13px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* SCANNER */
+
+.scanner-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+    padding: 35px;
+    background: linear-gradient(140deg, #10251a, #0b1913);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+}
+
+.scanner-text h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.scanner-text h2 span {
+    color: var(--green);
+}
+
+.scanner-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.scanner-box {
+    min-height: 330px;
+    border: 2px dashed rgba(184,255,101,0.3);
+    border-radius: 18px;
+    background: rgba(184,255,101,0.025);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.scanner-box:hover {
+    border-color: var(--green);
+    background: rgba(184,255,101,0.05);
+}
+
+.upload-icon {
+    font-size: 50px;
+    margin-bottom: 18px;
+}
+
+.scanner-box h3 {
+    margin-bottom: 10px;
+}
+
+.scanner-box p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+#imageInput {
+    display: none;
+}
+
+#preview {
+    display: none;
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#scanResult {
+    display: none;
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(184,255,101,0.07);
+    color: var(--green);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* REPORT FORM */
+
+.report-wrapper {
+    max-width: 750px;
+    margin: auto;
+    padding: 35px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 9px;
+    color: #dbe7dc;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    color: var(--white);
+    background: #081710;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(184,255,101,0.06);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group select option {
+    background: var(--panel);
+}
+
+.form-message {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.success {
+    color: var(--green);
+}
+
+.error {
+    color: #ff9a9a;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 60px;
+    padding: 35px 7%;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer-highlight {
+    color: var(--green);
+}
+
+/* REVEAL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 950px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+    }
+
+    .hero-visual {
+        min-height: 430px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .scanner-container {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .nav-links a:nth-child(2),
+    .nav-links a:nth-child(3) {
+        display: none;
+    }
+
+    .nav-button {
+        padding: 10px 12px;
+    }
+
+    .hero {
+        padding: 60px 6%;
+        gap: 20px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .hero-visual {
+        min-height: 350px;
+        transform: scale(0.85);
+        margin: -15px 0;
+    }
+
+    .orbit {
+        width: 320px;
+        height: 320px;
+    }
+
+    .orbit-two {
+        width: 250px;
+        height: 250px;
+    }
+
+    .planet {
+        width: 180px;
+        height: 180px;
+    }
+
+    .planet-emoji {
+        font-size: 75px;
+    }
+
+    .card-one {
+        right: -5px;
+    }
+
+    .card-two {
+        left: -5px;
+    }
+
+    section.content-section {
+        padding: 65px 6%;
+    }
+
+    .stats-grid,
+    .features-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .scanner-container,
+    .report-wrapper {
+        padding: 22px;
+    }
+
+    .scanner-text h2 {
+        font-size: 30px;
+    }
+
+    footer {
+        padding: 30px 6%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<header class="navbar">
-    <a class="logo" href="index.html">🌿 Swach Netra AI</a>
+<div class="background-glow"></div>
+<div id="particles"></div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="report.html">Report Litter</a>
-        <a href="dashboard.html">Dashboard</a>
-    </nav>
-</header>
+<!-- NAVIGATION -->
 
-<section class="hero">
-    <div class="hero-content">
-        <span class="tag">AI FOR A CLEANER INDIA</span>
+<nav>
+    <a href="#home" class="logo">
+        <div class="logo-icon">🌿</div>
+        Clean<span>Vision AI</span>
+    </a>
 
-        <h1>See the waste.<br><span>Be the change.</span></h1>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#impact">Our Impact</a>
+        <a href="#features">Features</a>
+        <a href="#scanner">AI Scanner</a>
+        <a href="#report" class="nav-button">Report Pollution ↗</a>
+    </div>
+</nav>
 
-        <p>
-            Making our streets, parks, and public spaces cleaner
-            using artificial intelligence and community action.
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Technology for a greener planet
+        </div>
+
+        <h1>
+            A cleaner world<br>
+            starts with <span>you.</span>
+        </h1>
+
+        <p class="hero-description">
+            Meet Clean Vision AI — a smarter way to identify environmental
+            pollution, report waste hotspots, and inspire communities to
+            create a cleaner, healthier, greener tomorrow.
         </p>
 
         <div class="hero-buttons">
-            <a href="report.html" class="btn">Report Litter →</a>
-            <a href="dashboard.html" class="btn btn-outline">
-                Explore Dashboard
+            <a href="#scanner" class="btn btn-primary">
+                ✦ Explore AI Scanner
+            </a>
+
+            <a href="#features" class="btn btn-secondary">
+                Discover More →
             </a>
         </div>
 
-        <p class="small-text">♻️ Small actions can create a cleaner future.</p>
     </div>
 
-    <div class="hero-art">
-        <div class="earth">🌍</div>
-        <div class="floating-card card-one">🤖 AI Detection</div>
-        <div class="floating-card card-two">🌱 Clean Environment</div>
-    </div>
-</section>
+    <div class="hero-visual reveal">
 
-<section class="stats">
-    <div class="stat-card">
-        <span>📸</span>
-        <p>Total Reports</p>
-        <h2 id="total-reports">0</h2>
-    </div>
+        <div class="orbit"></div>
+        <div class="orbit orbit-two"></div>
 
-    <div class="stat-card">
-        <span>🧹</span>
-        <p>Cleaned Reports</p>
-        <h2 id="cleaned-reports">0</h2>
-    </div>
-
-    <div class="stat-card">
-        <span>⏳</span>
-        <p>Pending Reports</p>
-        <h2 id="pending-reports">0</h2>
-    </div>
-</section>
-
-<section class="section">
-    <div class="section-heading">
-        <div>
-            <span class="tag">COMMUNITY REPORTS</span>
-            <h2>Litter Hotspot Map</h2>
+        <div class="planet">
+            <div class="planet-emoji">🌍</div>
         </div>
 
-        <a href="dashboard.html" class="text-link">View reports →</a>
+        <div class="floating-card card-one">
+            <div class="card-label">OUR MISSION</div>
+            <div class="card-value">Zero <span>Waste.</span></div>
+        </div>
+
+        <div class="floating-card card-two">
+            <div class="card-label">YOUR ACTION MATTERS</div>
+            <div class="card-value">♻️ <span>Act Green</span></div>
+        </div>
+
     </div>
 
-    <div id="map"></div>
-
-    <p class="small-text">
-        Report locations appear on the map when coordinates are provided.
-    </p>
 </section>
 
-<section class="section">
-    <div class="section-heading">
-        <div>
-            <span class="tag">OUR SOLUTION</span>
-            <h2>Technology for a cleaner tomorrow</h2>
-        </div>
+<!-- IMPACT DASHBOARD -->
+
+<section class="content-section" id="impact">
+
+    <div class="section-heading reveal">
+        <div class="section-tag">Our environmental mission</div>
+        <h2>Small actions. <span style="color:var(--green)">Big impact.</span></h2>
+        <p>
+            Every responsible action brings us closer to a sustainable
+            future. Be part of the change our planet needs.
+        </p>
     </div>
 
-    <div class="features">
-        <article class="feature-card">
-            <div class="feature-icon">🤖</div>
-            <h3>AI Litter Detection</h3>
+    <div class="stats-grid">
+
+        <div class="stat-card reveal">
+            <div class="stat-icon">🌱</div>
+            <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+            <div class="stat-title">Greener Tomorrow</div>
+            <div class="stat-note">Our vision for a healthier planet.</div>
+        </div>
+
+        <div class="stat-card reveal">
+            <div class="stat-icon">♻️</div>
+            <div class="stat-number">Reduce</div>
+            <div class="stat-title">Waste at Source</div>
+            <div class="stat-note">Choose reuse and responsible recycling.</div>
+        </div>
+
+        <div class="stat-card reveal">
+            <div class="stat-icon">🤖</div>
+            <div class="stat-number">AI +</div>
+            <div class="stat-title">Smart Detection</div>
+            <div class="stat-note">Build smarter tools for environmental monitoring.</div>
+        </div>
+
+        <div class="stat-card reveal">
+            <div class="stat-icon">🌍</div>
+            <div class="stat-number">1 Earth</div>
+            <div class="stat-title">One Shared Home</div>
+            <div class="stat-note">Protect the only planet we call home.</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="content-section" id="features">
+
+    <div class="section-heading reveal">
+        <div class="section-tag">What makes us different</div>
+        <h2>Innovation meets <span style="color:var(--green)">nature.</span></h2>
+        <p>
+            Technology becomes powerful when we use it to solve real-world
+            environmental problems.
+        </p>
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">🔍</div>
+            <h3>Smart Waste Scanner</h3>
             <p>
-                Analyze uploaded photographs using a computer-vision model
-                to identify selected objects that may be litter.
+                Upload an image of a waste-filled area to prepare it for
+                environmental image analysis. Connect an AI model to enable
+                real detection.
             </p>
-        </article>
+        </div>
 
-        <article class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">📍</div>
-            <h3>Hotspot Mapping</h3>
+            <h3>Pollution Reporting</h3>
             <p>
-                Display submitted reports on a map to help identify
-                locations that may require cleaning.
+                Report littering, overflowing garbage, and other pollution
+                concerns so that incidents can be documented and reviewed.
             </p>
-        </article>
+        </div>
 
-        <article class="feature-card">
-            <div class="feature-icon">♻️</div>
-            <h3>Cleanup Tracking</h3>
+        <div class="feature-card reveal">
+            <div class="feature-icon">📊</div>
+            <h3>Environmental Insights</h3>
             <p>
-                Monitor report progress and attach before-and-after
-                cleanup evidence.
+                Organize reported incidents and monitor progress through
+                an informative environmental dashboard.
             </p>
-        </article>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">🌳</div>
+            <h3>Green Communities</h3>
+            <p>
+                Encourage individuals, students, and communities to take
+                part in clean-up activities and sustainable living.
+            </p>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">♻️</div>
+            <h3>Responsible Recycling</h3>
+            <p>
+                Promote waste segregation, reuse, recycling, and better
+                habits to reduce the amount of waste sent to landfills.
+            </p>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">💚</div>
+            <h3>Make an Impact</h3>
+            <p>
+                Turn awareness into action. A cleaner environment begins
+                with small, consistent choices made by all of us.
+            </p>
+        </div>
+
     </div>
+
 </section>
+
+<!-- AI SCANNER -->
+
+<section class="content-section" id="scanner">
+
+    <div class="scanner-container reveal">
+
+        <div class="scanner-text">
+
+            <div class="section-tag">Explore intelligent technology</div>
+
+            <h2>
+                See the problem.<br>
+                <span>Start the solution.</span>
+            </h2>
+
+            <p>
+                Select a photograph of a polluted location or waste-filled
+                area. Preview your image before connecting it to the
+                project's AI image-analysis backend.
+            </p>
+
+            <p style="font-size:13px">
+                ✦ JPG, PNG, and WEBP images are supported by this preview.
+            </p>
+
+        </div>
+
+        <div class="scanner-box">
+
+            <div class="upload-icon" id="uploadIcon">📸</div>
+
+            <h3 id="uploadTitle">Upload an environmental image</h3>
+
+            <p id="uploadDescription">
+                Choose an image to preview it here.
+            </p>
+
+            <img id="preview" alt="Selected environmental image preview">
+
+            <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp">
+
+            <button class="btn btn-primary" id="chooseButton" type="button">
+                Choose Image ↑
+            </button>
+
+            <button class="btn btn-secondary" id="scanButton" type="button"
+                    style="display:none;margin-top:12px">
+                Prepare Image Analysis →
+            </button>
+
+            <div id="scanResult" role="status"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- REPORT POLLUTION -->
+
+<section class="content-section" id="report">
+
+    <div class="section-heading reveal">
+        <div class="section-tag">Be part of the solution</div>
+        <h2>Report. Restore. <span style="color:var(--green)">Renew.</span></h2>
+        <p>
+            Noticed a polluted area? Record the details below to prepare
+            a report for the Clean Vision AI project.
+        </p>
+    </div>
+
+    <div class="report-wrapper reveal">
+
+        <form id="reportForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="reportName">Your Name</label>
+                    <input type="text" id="reportName"
+                           placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reportType">Type of Pollution</label>
+
+                    <select id="reportType" required>
+                        <option value="">Select a category</option>
+                        <option>Plastic Waste</option>
+                        <option>Overflowing Garbage</option>
+                        <option>Water Pollution</option>
+                        <option>Air Pollution</option>
+                        <option>Illegal Dumping</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="reportLocation">Location</label>
+                    <input type="text" id="reportLocation"
+                           placeholder="Area, city, or landmark" required>
+                </div>
+
+                <div class="form-group full">
+                    <label for="reportDescription">Describe the Problem</label>
+                    <textarea id="reportDescription"
+                              placeholder="Tell us what you observed..."
+                              required></textarea>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+                🌿 Prepare Pollution Report →
+            </button>
+
+            <div id="reportMessage" class="form-message" role="status"></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-    <h3>🌿 Swach Netra AI</h3>
-    <p>Smart technology. Cleaner surroundings. A better tomorrow.</p>
+
+    <a href="#home" class="logo">
+        <div class="logo-icon">🌿</div>
+        Clean<span>Vision AI</span>
+    </a>
+
+    <p>
+        Designed for a cleaner planet. Built with purpose.<br>
+        <span class="footer-highlight">Every action counts. Every voice matters.</span>
+    </p>
+
+    <p>© 2026 Clean Vision AI</p>
+
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/main.js"></script>
+<script>
+// FLOATING BACKGROUND PARTICLES
+
+const particles = document.getElementById("particles");
+
+for (let i = 0; i < 35; i++) {
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.animationDelay = Math.random() * 12 + "s";
+    particle.style.animationDuration = (8 + Math.random() * 12) + "s";
+
+    particles.appendChild(particle);
+}
+
+
+// SCROLL REVEAL ANIMATION
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    revealObserver.observe(element);
+});
+
+
+// IMAGE UPLOAD AND PREVIEW
+
+const imageInput = document.getElementById("imageInput");
+const chooseButton = document.getElementById("chooseButton");
+const scanButton = document.getElementById("scanButton");
+const preview = document.getElementById("preview");
+const scanResult = document.getElementById("scanResult");
+
+let selectedImage = null;
+let previewURL = null;
+
+chooseButton.addEventListener("click", () => {
+    imageInput.click();
+});
+
+imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+
+    if (!file) return;
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+    if (!allowedTypes.includes(file.type)) {
+        alert("Please choose a JPG, PNG, or WEBP image.");
+        imageInput.value = "";
+        return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+        alert("Please choose an image smaller than 5 MB.");
+        imageInput.value = "";
+        return;
+    }
+
+    selectedImage = file;
+
+    if (previewURL) {
+        URL.revokeObjectURL(previewURL);
+    }
+
+    previewURL = URL.createObjectURL(file);
+
+    preview.src = previewURL;
+    preview.style.display = "block";
+
+    document.getElementById("uploadIcon").style.display = "none";
+    document.getElementById("uploadTitle").textContent = file.name;
+    document.getElementById("uploadDescription").textContent =
+        "Image selected successfully.";
+
+    chooseButton.textContent = "Choose Another Image";
+    scanButton.style.display = "inline-flex";
+
+    scanResult.style.display = "none";
+});
+
+
+// PREPARE IMAGE ANALYSIS
+
+scanButton.addEventListener("click", async () => {
+    if (!selectedImage) {
+        alert("Please select an image first.");
+        return;
+    }
+
+    scanResult.style.display = "block";
+    scanResult.textContent = "Preparing image for analysis...";
+
+    /*
+      FRONTEND DEMO ONLY:
+      This does not detect waste or pollution.
+      Connect your actual trained AI model or backend endpoint here.
+    */
+
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/analyze", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Analysis endpoint is not available.");
+        }
+
+        const result = await response.json();
+
+        scanResult.textContent =
+            "Analysis response: " + JSON.stringify(result);
+
+    } catch (error) {
+        scanResult.textContent =
+            "Image preview is ready. AI detection is not connected yet. " +
+            "Connect a trained AI model and the /api/analyze backend endpoint " +
+            "to enable real environmental analysis.";
+    }
+});
+
+
+// POLLUTION REPORT FORM
+
+const reportForm = document.getElementById("reportForm");
+const reportMessage = document.getElementById("reportMessage");
+
+reportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const report = {
+        name: document.getElementById("reportName").value.trim(),
+        type: document.getElementById("reportType").value,
+        location: document.getElementById("reportLocation").value.trim(),
+        description: document.getElementById("reportDescription").value.trim()
+    };
+
+    if (!report.name || !report.type ||
+        !report.location || !report.description) {
+        reportMessage.className = "form-message error";
+        reportMessage.textContent = "Please fill in all the fields.";
+        return;
+    }
+
+    /*
+      This fallback prepares a local report.
+      It does not send or permanently save the report.
+      Connect your backend to store reports in a database.
+    */
+
+    reportMessage.className = "form-message success";
+    reportMessage.textContent =
+        "Your report is ready! " +
+        "Category: " + report.type + ". " +
+        "Location: " + report.location + ". " +
+        "Connect the backend to save and track this report.";
+
+    console.log("Prepared pollution report:", report);
+
+    reportForm.reset();
+});
+
+
+// SIMPLE ANIMATED COUNTER
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const element = entry.target;
+        const target = Number(element.dataset.target);
+        const suffix = element.dataset.suffix || "";
+        const duration = 1200;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const progress = Math.min(
+                (currentTime - startTime) / duration,
+                1
+            );
+
+            const value = Math.floor(target * progress);
+
+            element.textContent = value + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+        counterObserver.unobserve(element);
+    });
+}, {
+    threshold: 0.5
+});
+
+document.querySelectorAll("[data-target]").forEach(element => {
+    counterObserver.observe(element);
+});
+</script>
 
 </body>
 </html>
